@@ -6,6 +6,8 @@ function onInit() {
         .then(renderVideos)
         .then(renderSelectedVideo)
 
+    getWikipediaArticle()
+        .then(renderWikipedia)
 }
 
 
@@ -32,6 +34,21 @@ function renderSelectedVideo() {
         </iframe>
     `
     elSelectedVideoContainer.innerHTML = strHtml
+}
+
+function renderWikipedia(article) {
+    const elWikipediaContainer = document.querySelector('.wikipedia-results-container')
+
+    let strHtml = article.map(result => `
+        <div class="result-item">
+            <h4>
+                <a href="https://en.wikipedia.org/?curid=${result.pageid}">${result.title}</a>
+            </h4>
+            <p>${result.snippet}</p>
+        </div>
+    `)
+
+    elWikipediaContainer.innerHTML = strHtml.join('')
 }
 
 

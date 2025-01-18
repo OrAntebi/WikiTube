@@ -1,3 +1,4 @@
 .wikipedia-results-container {
     grid-area: wikipedia;
+    row-gap: 10px;
 }

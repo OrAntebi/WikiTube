@@ -6,9 +6,9 @@ const STORAGE_KEY_SEARCH_INPUT = 'searchInputDB'
 const STORAGE_KEY_VIDEOS = 'videoDB'
 const STORAGE_KEY_SELECTED_VIDEO = 'selectedVideo'
 
-let videos = loadFromStorage(STORAGE_KEY_VIDEOS) || {}
-let searchValue = loadFromStorage(STORAGE_KEY_SEARCH_INPUT) || 'Beatles'
+let searchValue = loadFromStorage(STORAGE_KEY_SEARCH_INPUT) || 'Martin Garrix'
 let selectedVideo = loadFromStorage(STORAGE_KEY_SELECTED_VIDEO) || {}
+let videos = loadFromStorage(STORAGE_KEY_VIDEOS) || {}
 
 
 function getVideos() {
