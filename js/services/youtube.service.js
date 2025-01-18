@@ -3,10 +3,11 @@
 
 const YOUTUBE_API_KEY = 'AIzaSyBZTadHl9714-uclax5w-o9sMjcHHrz9qM'
 
+const STORAGE_KEY_SEARCH_INPUT = 'seachInputDB'
 const STORAGE_KEY_VIDEOS = 'videoDB'
 const STORAGE_KEY_SELECTED_VIDEO = 'selectedVideo'
 
-var searchValue = 'Beatls'
+var searchValue = loadFromStorage(STORAGE_KEY_SEARCH_INPUT) || 'Beatles'
 var selectedVideo = {}
 
 
@@ -21,6 +22,7 @@ function getVideos() {
     if (storedVideos[searchValue]) {
         console.log('GET FROM STORAGE')
         selectedVideo = storedVideos[searchValue][0]
+        saveToStorage(STORAGE_KEY_SEARCH_INPUT, searchValue)
         saveToStorage(STORAGE_KEY_SELECTED_VIDEO, selectedVideo)
         return Promise.resolve(storedVideos[searchValue])
     }
@@ -44,6 +46,7 @@ function getVideos() {
 
 function searchVideo(newValue) {
     searchValue = newValue
+    saveToStorage(STORAGE_KEY_SEARCH_INPUT, searchValue)
 }
 
 function _selectFirstVideo(videos) {
