@@ -2,3 +2,34 @@
     font-family: Youtube-Sans;
     src: url('../fonts/youtube-sans/YouTubeSansRegular.otf');
 }
+
+
+/* Font Awesome */
+
+@font-face {
+    font-family: Fa-brand;
+    src: url('../fonts/fa/fa-brands-400.ttf');
+}
+
+@font-face {
+    font-family: Fa-solid;
+    src: url('../fonts/fa/fa-solid-900.ttf');
+}
+
+
+.fa-brand::before {
+    font-family: Fa-brand;
+}
+
+.fa-solid::before {
+    font-family: Fa-solid;
+}
+
+.fa-brand.youtube::before {
+    color: red;
+    content: '\f167';
+}
+
+.fa-solid.search::before {
+    content: '\f002';
+}
