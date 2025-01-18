@@ -15,7 +15,7 @@ function renderVideos(videos) {
     let strHtml = videos.map(({ snippet: { title, thumbnails: { default: { url } } } }) => `
         <article class="video-item flex align-center" onclick="onClickVideo()">
             <img class="video-img" src="${url}" alt="${title}">
-            <h4 class="video-title">${title}</h4>
+            <p class="video-title">${title}</p>
         </article>
     `)
     elVideosContainer.innerHTML = strHtml.join('')
@@ -26,7 +26,7 @@ function renderSelectedVideo() {
     const elSelectedVideoContainer = document.querySelector('.selected-video-container')
 
     let strHtml = `
-        <iframe width="420" height="315"
+        <iframe class="selected-video"
             src="https://www.youtube.com/embed/${selectedVideo.id.videoId}">
         </iframe>
     `

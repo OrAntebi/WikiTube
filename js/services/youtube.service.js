@@ -1,6 +1,5 @@
 'use strict'
 
-
 const YOUTUBE_API_KEY = 'AIzaSyBZTadHl9714-uclax5w-o9sMjcHHrz9qM'
 
 const STORAGE_KEY_SEARCH_INPUT = 'seachInputDB'
@@ -9,8 +8,6 @@ const STORAGE_KEY_SELECTED_VIDEO = 'selectedVideo'
 
 var searchValue = loadFromStorage(STORAGE_KEY_SEARCH_INPUT) || 'Beatles'
 var selectedVideo = {}
-
-
 
 
 function getVideos() {
@@ -22,8 +19,8 @@ function getVideos() {
     if (storedVideos[searchValue]) {
         console.log('GET FROM STORAGE')
         selectedVideo = storedVideos[searchValue][0]
-        saveToStorage(STORAGE_KEY_SEARCH_INPUT, searchValue)
-        saveToStorage(STORAGE_KEY_SELECTED_VIDEO, selectedVideo)
+        _saveSearchInput()
+        _saveSelectedVideo()
         return Promise.resolve(storedVideos[searchValue])
     }
 
@@ -34,11 +31,9 @@ function getVideos() {
         .then(res => {
             console.log('GET FROM AXIOS')
             let videos = res.items
-
             _selectFirstVideo(videos)
             storedVideos[searchValue] = videos
-            saveToStorage(STORAGE_KEY_VIDEOS, storedVideos)
-
+            _saveVideos(storedVideos)
             return videos
         })
 }
@@ -46,10 +41,28 @@ function getVideos() {
 
 function searchVideo(newValue) {
     searchValue = newValue
-    saveToStorage(STORAGE_KEY_SEARCH_INPUT, searchValue)
+    _saveSearchInput()
 }
+
+
+/* ----------- LOCAL FUNCTIONS ----------- */
 
 function _selectFirstVideo(videos) {
     selectedVideo = videos[0]
-    saveToStorage(STORAGE_KEY_SELECTED_VIDEO, videos[0])
+    _saveSelectedVideo()
+}
+
+
+function _saveVideos(storedVideos) {
+    saveToStorage(STORAGE_KEY_VIDEOS, storedVideos)
+}
+
+
+function _saveSelectedVideo() {
+    saveToStorage(STORAGE_KEY_SELECTED_VIDEO, selectedVideo)
+}
+
+
+function _saveSearchInput() {
+    saveToStorage(STORAGE_KEY_SEARCH_INPUT, searchValue)
 }
