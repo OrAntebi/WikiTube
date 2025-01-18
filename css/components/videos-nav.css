@@ -1,0 +1,20 @@
+.videos-nav-container {
+    grid-area: aside-videos;
+
+    .videos-list {
+        gap: 10px;
+
+        padding: 10px;
+        border: 2px solid lightgray;
+
+        .video-item {
+            gap: 10px;
+            cursor: pointer;
+
+            .video-title {
+                text-wrap: pretty;
+                font-size: .7rem;
+            }
+        }
+    }
+}

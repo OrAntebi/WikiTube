@@ -1,0 +1,10 @@
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-areas: 
+        "aside-videos selected-video"
+        "aside-videos wikipedia";
+
+    gap: 10px;
+}
