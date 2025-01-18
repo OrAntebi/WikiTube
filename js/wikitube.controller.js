@@ -12,17 +12,18 @@ function onInit() {
 function renderVideos(videos) {
     const elVideosContainer = document.querySelector('.videos-list')
 
-    let strHtml = videos.map(({ snippet: { title, thumbnails: { default: { url } } } }) => `
-        <article class="video-item flex align-center" onclick="onClickVideo()">
+    let strHtml = videos.map(({ id: { videoId }, snippet: { title, thumbnails: { default: { url } } } }) => `
+        <article class="video-item flex align-center" onclick="onClickVideo('${videoId}')">
             <img class="video-img" src="${url}" alt="${title}">
             <p class="video-title">${title}</p>
         </article>
     `)
+
     elVideosContainer.innerHTML = strHtml.join('')
 }
 
 function renderSelectedVideo() {
-    const selectedVideo = loadFromStorage(STORAGE_KEY_SELECTED_VIDEO) 
+    const selectedVideo = loadFromStorage(STORAGE_KEY_SELECTED_VIDEO)
     const elSelectedVideoContainer = document.querySelector('.selected-video-container')
 
     let strHtml = `
@@ -43,4 +44,9 @@ function onSearchVideo(ev) {
     searchVideo(value)
     onInit()
     elInput.value = ''
+}
+
+function onClickVideo(videoId) {
+    clickVideo(videoId)
+    renderSelectedVideo()
 }

@@ -2,11 +2,11 @@
 
 const YOUTUBE_API_KEY = 'AIzaSyBZTadHl9714-uclax5w-o9sMjcHHrz9qM'
 
-const STORAGE_KEY_SEARCH_INPUT = 'seachInputDB'
+const STORAGE_KEY_SEARCH_INPUT = 'searchInputDB'
 const STORAGE_KEY_VIDEOS = 'videoDB'
 const STORAGE_KEY_SELECTED_VIDEO = 'selectedVideo'
 
-const videos = loadFromStorage(STORAGE_KEY_VIDEOS) || {}
+let videos = loadFromStorage(STORAGE_KEY_VIDEOS) || {}
 let searchValue = loadFromStorage(STORAGE_KEY_SEARCH_INPUT) || 'Beatles'
 let selectedVideo = loadFromStorage(STORAGE_KEY_SELECTED_VIDEO) || {}
 
@@ -24,11 +24,11 @@ function getVideos() {
     return axios.get(url)
         .then(res => {
             console.log('GET FROM AXIOS')
-            const videos = res.data.items
-            _selectFirstVideo(videos)
-            videos[searchValue] = videos
+            const fetchedVideos = res.data.items
+            _selectFirstVideo(fetchedVideos)
+            videos[searchValue] = fetchedVideos
             _saveVideos()
-            return videos
+            return fetchedVideos
         })
 }
 
@@ -36,6 +36,11 @@ function getVideos() {
 function searchVideo(newValue) {
     searchValue = newValue
     _saveSearchInput()
+}
+
+function clickVideo(id) {
+    selectedVideo = _searchVideoById(id)
+    _saveSelectedVideo()
 }
 
 
@@ -46,6 +51,9 @@ function _selectFirstVideo(videos) {
     _saveSelectedVideo()
 }
 
+function _searchVideoById(id) {
+    return videos[searchValue].find(video => video.id.videoId === id);
+}
 
 function _saveVideos() {
     saveToStorage(STORAGE_KEY_VIDEOS, videos)
