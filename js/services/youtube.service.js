@@ -6,34 +6,28 @@ const STORAGE_KEY_SEARCH_INPUT = 'seachInputDB'
 const STORAGE_KEY_VIDEOS = 'videoDB'
 const STORAGE_KEY_SELECTED_VIDEO = 'selectedVideo'
 
-var searchValue = loadFromStorage(STORAGE_KEY_SEARCH_INPUT) || 'Beatles'
-var selectedVideo = {}
+const videos = loadFromStorage(STORAGE_KEY_VIDEOS) || {}
+let searchValue = loadFromStorage(STORAGE_KEY_SEARCH_INPUT) || 'Beatles'
+let selectedVideo = loadFromStorage(STORAGE_KEY_SELECTED_VIDEO) || {}
 
 
 function getVideos() {
-    const storedVideos = loadFromStorage(STORAGE_KEY_VIDEOS) || {}
-    const storedSelectedVideo = loadFromStorage(STORAGE_KEY_SELECTED_VIDEO)
-
-    if (storedSelectedVideo) selectedVideo = storedSelectedVideo
-
-    if (storedVideos[searchValue]) {
+    if (videos[searchValue]) {
         console.log('GET FROM STORAGE')
-        selectedVideo = storedVideos[searchValue][0]
+        selectedVideo = videos[searchValue][0]
         _saveSearchInput()
         _saveSelectedVideo()
-        return Promise.resolve(storedVideos[searchValue])
+        return Promise.resolve(videos[searchValue])
     }
 
     const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&videoEmbeddable=true&type=video&key=${YOUTUBE_API_KEY}&q=${searchValue}`
-
     return axios.get(url)
-        .then(res => res.data)
         .then(res => {
             console.log('GET FROM AXIOS')
-            let videos = res.items
+            const videos = res.data.items
             _selectFirstVideo(videos)
-            storedVideos[searchValue] = videos
-            _saveVideos(storedVideos)
+            videos[searchValue] = videos
+            _saveVideos()
             return videos
         })
 }
@@ -53,8 +47,8 @@ function _selectFirstVideo(videos) {
 }
 
 
-function _saveVideos(storedVideos) {
-    saveToStorage(STORAGE_KEY_VIDEOS, storedVideos)
+function _saveVideos() {
+    saveToStorage(STORAGE_KEY_VIDEOS, videos)
 }
 
 
