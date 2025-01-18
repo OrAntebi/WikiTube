@@ -1,0 +1,7 @@
+.main-logo {
+    column-gap: 5px;
+
+    .youtube {
+        font-size: 1.1em;
+    }
+}

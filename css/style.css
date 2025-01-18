@@ -9,7 +9,7 @@
 
 /* COMPONENTS */
 @import url('components/main-header.css');
-@import url('components/logo.css');
+@import url('components/main-logo.css');
 @import url('components/main-search.css');
 
 @import url('components/main-content.css');
