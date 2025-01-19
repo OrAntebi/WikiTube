@@ -37,7 +37,8 @@ function renderSelectedVideo() {
 }
 
 function renderWikipedia(article) {
-    const elWikipediaContainer = document.querySelector('.wikipedia-results-container')
+    const elWikipediaContainer = document.querySelector('.wikipedia-results')
+    const elWikipediaTitle = document.querySelector('.wikipedia-title')
 
     let strHtml = article.map(result => `
         <div class="result-item">
@@ -47,7 +48,7 @@ function renderWikipedia(article) {
             <p>${result.snippet}</p>
         </div>
     `)
-
+    elWikipediaTitle.innerText = searchValue
     elWikipediaContainer.innerHTML = strHtml.join('')
 }
 

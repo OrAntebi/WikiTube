@@ -1,8 +1,14 @@
 .main-header {
     width: 100%; 
 
-    padding-block: 10px ;
+    padding: 15px ;
     margin-block-end: 20px;
 
     background-color: rgb(214, 214, 214);
+    box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.6);
+
+    .header-wrapper {
+        flex-direction: column;
+        gap: 15px;
+    }
 }

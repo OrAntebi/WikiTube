@@ -1,6 +1,6 @@
 .selected-video-container {
     grid-area: selected-video;
-
+    
     .selected-video {
         width: 100%;
         aspect-ratio: 2;

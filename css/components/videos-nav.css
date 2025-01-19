@@ -13,7 +13,7 @@
 
             .video-title {
                 text-wrap: pretty;
-                font-size: .7rem;
+                font-size: clamp(0.7rem, 2vw, 1rem);
             }
         }
     }

@@ -1,0 +1,32 @@
+@media (min-width: 850px) {
+
+    /***** MAIN LAYOUT ******/
+    .main-layout {
+        display: grid;
+        grid-template-columns:
+            minmax(40px, 1fr) minmax(auto, 1200px) minmax(40px, 1fr);
+
+        >*:not(.full) {
+            grid-column: 2;
+        }
+
+        >*.full {
+            grid-column: 1 / -1;
+        }
+    }
+
+    .app .main-header .header-wrapper {
+        flex-direction: row;
+    }
+
+
+    .main-content {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-areas:
+            "aside-videos selected-video"
+            "aside-videos wikipedia";
+
+        row-gap: 0px;
+    }
+}

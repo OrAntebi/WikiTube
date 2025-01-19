@@ -12,14 +12,14 @@
 
     <div class="app main-layout">
         <header class="main-header main-layout full">
-            <div class="flex align-center space-between">
+            <div class="header-wrapper flex align-center space-between">
                 <h1 class="main-logo flex justify-center align-center">
                     <div class="fa-brand youtube"></div>
                     WikiTube
                 </h1>
                 <form class="search-container" onsubmit="onSearchVideo(event)">
                     <div class="search-input-wrapper">
-                        <input class="search-input" type="text" name="search" placeholder="Search"/>
+                        <input class="search-input" type="text" name="search" placeholder="Search" />
                         <button class="search-button fa-solid search"></button>
                     </div>
                 </form>
@@ -27,11 +27,14 @@
         </header>
 
         <main class="main-content">
+            <section class="selected-video-container"></section>
             <aside class="videos-nav-container">
                 <ul class="videos-list flex column"></ul>
             </aside>
-            <section class="selected-video-container"></section>
-            <article class="wikipedia-results-container flex column"></article>
+            <section class="wikipedia-results-container">
+                <h2 class="wikipedia-title"></h2>
+                <article class="wikipedia-results flex column"></article>
+            </section>
         </main>
     </div>
 

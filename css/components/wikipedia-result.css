@@ -1,4 +1,11 @@
 .wikipedia-results-container {
     grid-area: wikipedia;
     row-gap: 10px;
+
+    padding: 0 15px 15px;
+}
+
+.wikipedia-title {
+    text-align: center;
+    text-transform: capitalize;
 }
