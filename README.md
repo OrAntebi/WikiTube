@@ -72,7 +72,7 @@ This project was developed as part of a **web development learning program**, fo
 
 ---
 
-## 📸 Screenshot
+## 📸 Screenshots
 
 Here are some screenshots from the project:
 
