@@ -1,4 +1,4 @@
-# 🎬 WikiTube — YouTube & Wikipedia Unified Search App
+# 🎬 WikiTube — YouTube & Wikipedia Search
 
 **WikiTube** is a fully responsive, single-page web application combining **YouTube video search** with **Wikipedia article search** — all in one query.  
 This project was developed as part of a **web development learning program**, focusing on API integrations and dynamic UI using Vanilla JavaScript.
