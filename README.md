@@ -76,7 +76,7 @@ This project was developed as part of a **web development learning program**, fo
 
 Here are some screenshots from the project:
 
-<p align="center">
+<p align="right">
   <img width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/3d3dfc14-c985-434f-9215-c39c2cce96a9" />
   <img width="402" height="816" alt="image" src="https://github.com/user-attachments/assets/a4825d3b-9528-4685-959a-bdae1f73de92" />
 </p>
